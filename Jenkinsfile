@@ -36,7 +36,9 @@ node {
         }
     }
 
-    stage('Remove local images'){
+    stage('Remove local images') {
+        sh("docker rmi -f registry.hub.docker.com/zlyun1979/frontendspinnaker:${env.BUILD_NUMBER} || :")
         sh("docker rmi -f zlyun1979/frontendspinnaker:${env.BUILD_NUMBER} || :")
+        sh("docker rmi -f zlyun1979/frontendspinnaker:latest || :")
     } 
 }
