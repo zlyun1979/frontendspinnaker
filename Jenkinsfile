@@ -26,7 +26,7 @@ node {
     }
 
 
-    stage("Create build output") {
+    stage('Create build output') {
     
         // Make the output directory.
         sh "mkdir -p output"
@@ -53,7 +53,7 @@ node {
         }
     }
 
-    stage("22222Create build output") {
+    stage('22222Create build output') {
 
         // Make the output directory.
         sh "mkdir -p output"
