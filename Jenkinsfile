@@ -5,6 +5,8 @@ node {
         /* Let's make sure we have the repository cloned to our workspace */
 
         checkout scm
+        //version = sprintf("%04d", env.BUILD_NUMBER.toInteger())
+        println "Start building version ${env.BUILD_NUMBER}"
     }
 
     stage('Build image') {
@@ -33,4 +35,8 @@ node {
             app.push("latest")
         }
     }
+
+    stage('Remove local images'){
+        sh("docker rmi -f zlyun1979/frontendspinnaker:${env.BUILD_NUMBER} || :")
+    } 
 }
