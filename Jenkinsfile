@@ -1,12 +1,9 @@
 node {
-    withCheckout(scm) {
-         echo "GIT_COMMIT is ${env.GIT_COMMIT}"
-    }
-}
-
-
-node {
     def app
+    
+    withCheckout(scm) {
+        echo "GIT_COMMIT is ${env.GIT_COMMIT}"
+    }
 
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
