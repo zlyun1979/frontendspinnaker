@@ -1,8 +1,8 @@
 node {
     def app
     
-    withCheckout(scm) {
-        echo "GIT_COMMIT is ${env.GIT_COMMIT}"
+    for(e in env){
+        echo e + " is " + ${e}
     }
 
     stage('Clone repository') {
