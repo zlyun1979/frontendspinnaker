@@ -7,6 +7,13 @@ node {
         checkout scm
         //version = sprintf("%04d", env.BUILD_NUMBER.toInteger())
         println "Start building version ${env.BUILD_NUMBER}"
+
+        sh 'echo BUILD_NUMBER: ${BUILD_NUMBER}'
+        sh 'BUILD_TAG: ${BUILD_TAG}'
+        sh 'GIT_BRANCH: ${GIT_BRANCH}'
+        sh 'GIT_COMMIT: ${GIT_COMMIT}'
+        sh 'GIT_URL: ${GIT_URL}'
+        sh 'JOB_NAME: ${JOB_NAME}'
     }
 
     stage('Build image') {
@@ -53,21 +60,6 @@ node {
         }
     }
 
-    stage('22222Create build output') {
-
-        // Make the output directory.
-        sh "mkdir -p output"
-
-        // Write an useful file, which is needed to be archived.
-        writeFile file: "output/usefulfile.txt", text: "This file is useful, need to archive it."
-
-        // Write an useless file, which is not needed to be archived.
-        writeFile file: "output/uselessfile.md", text: "This file is useless, no need to archive it."
-
-
-        // Archive the build output artifacts.
-        archiveArtifacts artifacts: 'output/*.txt', excludes: 'output/*.md'
-    }
     stage('Remove local images') {
         sh("docker rmi -f registry.hub.docker.com/zlyun1979/frontendspinnaker:${env.BUILD_NUMBER} || :")
         sh("docker rmi -f zlyun1979/frontendspinnaker:${env.BUILD_NUMBER} || :")
