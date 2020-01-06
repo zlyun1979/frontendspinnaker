@@ -1,9 +1,12 @@
+def printParams() {
+  env.getEnvironment().each { name, value -> println "Name: $name -> Value $value" }
+}
+printParams()
+
+
+
 node {
-    def app
-    def printParams() {
-        env.getEnvironment().each { name, value -> println "Name: $name -> Value $value" }
-    }
-    
+    def app    
     
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
