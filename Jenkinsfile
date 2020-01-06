@@ -10,7 +10,7 @@ node {
 
         sh 'echo BUILD_NUMBER: ${BUILD_NUMBER}'
         //sh 'BUILD_TAG: ${BUILD_TAG}'
-        sh 'GIT_BRANCH: ${GIT_BRANCH}'
+        //sh 'GIT_BRANCH: ${GIT_BRANCH}'
         sh 'GIT_COMMIT: ${GIT_COMMIT}'
         sh 'GIT_URL: ${GIT_URL}'
         sh 'JOB_NAME: ${JOB_NAME}'
