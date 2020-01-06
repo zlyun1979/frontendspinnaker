@@ -1,6 +1,10 @@
 node {
     def app
-
+    def printParams() {
+        env.getEnvironment().each { name, value -> println "Name: $name -> Value $value" }
+    }
+    
+    
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
 
@@ -9,10 +13,8 @@ node {
         
         //echo sh(returnStdout: true, script: 'env')
         //sh 'printenv'
-        def printParams() {
-            env.getEnvironment().each { name, value -> println "Name: $name -> Value $value" }
-        }
         printParams()
+        
         //version = sprintf("%04d", env.BUILD_NUMBER.toInteger())
         println "Start building version ${env.BUILD_NUMBER}"
 
