@@ -5,9 +5,7 @@ node {
         /* Let's make sure we have the repository cloned to our workspace */
 
         checkout scm
-        withCheckout(scm) {
-            echo "GIT_COMMIT is ${env.GIT_COMMIT}"
-        }
+        echo "GIT_COMMIT is ${env.GIT_COMMIT}"
         //version = sprintf("%04d", env.BUILD_NUMBER.toInteger())
         println "Start building version ${env.BUILD_NUMBER}"
 
