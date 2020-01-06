@@ -8,8 +8,11 @@ node {
         
         
         //echo sh(returnStdout: true, script: 'env')
-        sh 'printenv'
-        
+        //sh 'printenv'
+        def printParams() {
+            env.getEnvironment().each { name, value -> println "Name: $name -> Value $value" }
+        }
+        printParams()
         //version = sprintf("%04d", env.BUILD_NUMBER.toInteger())
         println "Start building version ${env.BUILD_NUMBER}"
 
